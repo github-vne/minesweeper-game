@@ -18,11 +18,13 @@ class Modal extends Component {
         return (
             <Dialog open={modal} maxWidth="xs" fullWidth={true}>
                 <div className="modal_window">
+
                     <img src={WinImg} alt="status_game" className="modal_img"/>
                     <div className="modal_game_status">
                         <p>Ты победил!</p>
                         <p>Твоё время: 20:02</p>
                     </div>
+
                     <aside className="modal_btn_panel">
                         <button className="gold_btn">Ещё раз</button>
                         <button
@@ -30,8 +32,8 @@ class Modal extends Component {
                             onClick={() => changeModal()}
                         >Закрыть</button>
                     </aside>
-                </div>
 
+                </div>
             </Dialog>
         );
     }

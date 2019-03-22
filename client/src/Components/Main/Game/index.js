@@ -7,10 +7,11 @@ import SmileJoyful from '../../../Static/img/smile_joyful.png';
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {checkMine, handleClick} from "../../../Store/actions";
+import {checkMine, handleClick, startGame} from "../../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
 /* img */
+import DeadPoolImg from '../../../Static/img/deadpool.png';
 import BtnImg from '../../../Static/img/button/btn.png';
 import FlagImg from '../../../Static/img/button/btn_flag.png';
 import MineImg from '../../../Static/img/button/btn_mine.png';
@@ -51,37 +52,17 @@ class Game extends Component {
                                         imgType = FlagImg;
                                     } else {
                                         switch (el) {
-                                            case 0:
-                                                imgType = Btn0Img;
-                                                break;
-                                            case 1:
-                                                imgType = Btn1Img;
-                                                break;
-                                            case 2:
-                                                imgType = Btn2Img;
-                                                break;
-                                            case 3:
-                                                imgType = Btn3Img;
-                                                break;
-                                            case 4:
-                                                imgType = Btn4Img;
-                                                break;
-                                            case 5:
-                                                imgType = Btn5Img;
-                                                break;
-                                            case 6:
-                                                imgType = Btn6Img;
-                                                break;
-                                            case 7:
-                                                imgType = Btn7Img;
-                                                break;
-                                            case 8:
-                                                imgType = Btn8Img;
-                                                break;
+                                            case 0: imgType = Btn0Img;break;
+                                            case 1: imgType = Btn1Img;break;
+                                            case 2: imgType = Btn2Img;break;
+                                            case 3: imgType = Btn3Img;break;
+                                            case 4: imgType = Btn4Img;break;
+                                            case 5: imgType = Btn5Img;break;
+                                            case 6: imgType = Btn6Img;break;
+                                            case 7: imgType = Btn7Img;break;
+                                            case 8: imgType = Btn8Img;break;
                                         }
                                     }
-
-
                                     return (
                                         <img src={imgType}
                                              disabled="disabled"
@@ -99,6 +80,13 @@ class Game extends Component {
                         )
                     })}
                 </div>
+                {field.length === 0 && <img src={DeadPoolImg} alt="DeadPoolImg" className="deadpool"/>}
+                {gameOver &&
+                <div className="game_over_panel">
+                    <button className="gold_btn start_game" onClick={() => this.props.startGame()}>
+                        Начать игру
+                    </button>
+                </div>}
             </section>
         )
     }
@@ -117,6 +105,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleClick: bindActionCreators(handleClick, dispatch),
         checkMine: bindActionCreators(checkMine, dispatch),
+        startGame: bindActionCreators(startGame, dispatch),
     }
 };
 

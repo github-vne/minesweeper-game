@@ -13,8 +13,7 @@ import {
 } from "./generation";
 
 const initialState = {
-    gameOver: false,
-    start: false,
+    gameOver: true,
     size: 8,
     mines: 10,
     field: [],
@@ -29,7 +28,6 @@ export const rootReducer = (state = initialState, action) => {
         case START_GAME:
             return {
                 ...state,
-                start: true,
                 gameOver: false,
                 field: generationField(state.size, state.mines),
                 viewField: generationView(state.size),
@@ -70,7 +68,6 @@ export const rootReducer = (state = initialState, action) => {
                     viewField: cellCheck,
                 };
             }
-
 
         case CHANGE_MODAL:
             return {

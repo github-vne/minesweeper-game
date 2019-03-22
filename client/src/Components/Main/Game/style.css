@@ -1,5 +1,5 @@
 
-.game_container{
+.game_container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -7,7 +7,7 @@
     flex-direction: column;
 }
 
-.game_box, .game_settings{
+.game_box, .game_settings {
     border: 4px solid #76a6c3;
     background: #2974a1;
     padding: 30px;
@@ -17,7 +17,7 @@
     max-width: 600px;
 }
 
-.game_panel{
+.game_panel {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -30,20 +30,40 @@
 }
 
 /* field */
-.field{
+.field {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.row{
+.row {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
 }
 
-.row img{
+.row img {
     width: 30px;
     height: 30px;
+}
+
+/* game_over_panel */
+.game_over_panel {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.deadpool {
+    width: 100%;
+    max-width: 130px;
+    margin: 0 auto;
+    display: block;
+}
+
+.start_game {
+    max-width: 250px;
+    margin-top: 10px;
 }

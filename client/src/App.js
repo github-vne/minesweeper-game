@@ -7,17 +7,9 @@ import {HashRouter, Route, Switch} from "react-router-dom";
 import Main from "./Components/Main";
 import SignIn from "./Components/SignIn";
 import Modal from "./Components/Modal";
-
-/* Redux */
-import {bindActionCreators} from "redux";
-import {startGame} from "./Store/actions";
-import connect from "react-redux/es/connect/connect";
+import Table from "./Components/Table";
 
 class App extends Component {
-
-    componentDidMount() {
-        this.props.startGame()
-    }
 
     render() {
         return (
@@ -25,25 +17,13 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Main}/>
                     <Route path="/sign_in" component={SignIn}/>
+                    <Route path="/table" component={Table}/>
                     <Route component=""/>
                 </Switch>
                 <Modal/>
             </HashRouter>
         );
-
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        start: state.start
-    }
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        startGame: bindActionCreators(startGame, dispatch),
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;
