@@ -5,6 +5,7 @@ import {HashRouter, Route, Switch} from "react-router-dom";
 
 /* Component */
 import Main from "./Components/Main";
+import SignIn from "./Components/SignIn";
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -20,18 +21,11 @@ class App extends Component {
     render() {
         return (
             <HashRouter>
-                <button onClick={() => this.props.startGame()}>s</button>
-                <div>
-                    <div>
-                        <main className="container main">
-                            <Switch>
-                                <Route exact path="/" component={Main}/>
-                                <Route path="/Main" component={Main}/>
-                                <Route component=""/>
-                            </Switch>
-                        </main>
-                    </div>
-                </div>
+                    <Switch>
+                        <Route exact path="/" component={Main}/>
+                        <Route path="/sign_in" component={SignIn}/>
+                        <Route component=""/>
+                    </Switch>
             </HashRouter>
         );
 

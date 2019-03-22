@@ -1,137 +1,15 @@
-.select_stream {
+
+.game{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
     width: 100%;
-    max-width: 300px;
-    margin-bottom: 10px;
-}
-
-.tab_panel {
     display: flex;
-    margin-bottom: 20px;
-    color: #6f7577;
-    border-bottom: 1px solid #d5dddf;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
-.tab_panel span {
-    padding: 20px 0;
-    margin-right: 30px;
-    cursor: pointer;
+.row button{
+    width: 30px;
+    height: 30px;
 }
-
-.tab_panel span:hover {
-    color: #77a8d0;
-}
-
-.tab_panel_active {
-    color: #77a8d0;
-    border-bottom: 2px solid #77a8d0;
-}
-
-/* Time line*/
-.time_sort {
-    display: flex;
-    border: 1px solid #d5dddf;
-    align-content: flex-start;
-    border-radius: 5px;
-    width: 298px;
-    align-items: center;
-}
-
-.time_sort span {
-    padding: 14px 15px;
-    color: #6c797f;
-    cursor: pointer;
-    border-radius: 5px;
-    font-weight: bold;
-    font-size: 14px;
-    border: 2px solid transparent;
-}
-
-.time_sort span:hover {
-    color: #77a8d0;
-}
-
-.active_time_btn {
-    border: 2px solid #77a8d0 !important;
-    color: #77a8d0;
-}
-
-.h_mobile_post {
-    display: none;
-}
-
-/* pagination_panel */
-.pagination_panel{
-    width: min-content;
-    max-width: 298px;
-    display: flex;
-    border-radius: 5px;
-    border: 1px solid #d5dddf;
-    margin-bottom: 20px;
-}
-
-.pagination_panel li{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    height: 42px;
-    width: 42px;
-    color: #6c797f;
-    cursor: pointer;
-}
-
-.pagination_panel li:hover{
-    background: rgba(77,128,170,0.2);
-}
-
-.pagination_panel li:first-child{
-    border-radius: 4px 0 0 4px;
-}
-
-.pagination_panel li:last-child {
-    border-radius: 0 4px 4px 0;
-}
-
-.pagination_active{
-    border: 1px solid #548eaa;
-}
-
-/* MEDIA Mobile Version*/
-@media only screen and (max-width: 550px) {
-    .h_mobile_post {
-        display: block !important;
-    }
-
-    .h_full_post {
-        display: none !important;
-    }
-}
-
-@media screen and (max-width: 450px) {
-
-    .tab_panel {
-        justify-content: space-between;
-    }
-
-    .tab_panel span {
-        margin-right: 0 !important;
-    }
-
-    .time_sort {
-        width: 100%;
-    }
-
-    .time_sort span {
-        padding: 14px 0;
-        width: 25%;
-        text-align: center;
-    }
-
-    .select_stream {
-        max-width: none;
-    }
-}
-

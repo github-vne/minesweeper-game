@@ -1,23 +1,26 @@
 @import "reset.css";
 /* Start */
-img {
-    -ms-user-select: none;
-    -moz-user-select: none;
-    -khtml-user-select: none;
-    -webkit-user-select: none;
-}
-
-.game{
-    display: flex;
-    flex-direction: column;
-}
-
-.row{
+body{
+    min-width: 320px;
+    min-height: 100vh;
     width: 100%;
-    display: flex;
+    background: url("../../Static/img/bacckground.jpg") no-repeat center center;
+    background-size: cover;
 }
 
-.row button{
-    width: 30px;
-    height: 30px;
+button{
+    cursor: pointer;
+}
+
+.gold_btn{
+    background: #ecae06;
+    color: #7d5c04;
+    border: 3px solid #f3cb5f;
+    padding: 7px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input{
+    padding: 7px;
 }

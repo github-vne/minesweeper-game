@@ -1,3 +1,7 @@
+@font-face {
+    font-family: RetroFont;
+    src: url(../font/retrofont.ttf);
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -10,15 +14,18 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video{
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
 	font: inherit;
 	vertical-align: baseline;
-    font-family: 'Roboto', sans-serif;
+    font-family: RetroFont, sans-serif;
     line-height: normal;
+}
+button, input{
+    font-family: RetroFont, sans-serif;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section { display: block }
@@ -55,8 +62,3 @@ img{
 ::-moz-placeholder          { color: #323232 }
 :-moz-placeholder           { color: #323232 }
 :-ms-input-placeholder      { color: #323232 }
-.text_overflow{
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
-}

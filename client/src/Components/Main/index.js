@@ -21,7 +21,9 @@ class Main extends Component {
                             {row.map((el, j) => {
                                 return (
                                     <button
-                                        disabled={gameOver ? "disabled" : ""}
+                                        disabled={
+                                            gameOver || viewField[i][j] === 1 ? "disabled" : ""
+                                        }
                                         onClick={() => handleClick({i,j})}
                                         onContextMenu={(e) => {
                                             e.preventDefault();
