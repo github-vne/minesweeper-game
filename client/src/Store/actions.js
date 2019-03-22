@@ -2,7 +2,7 @@ import {
     START_GAME,
     HANDLE_CLICK,
     CHECK_MINE,
-
+    CHANGE_MODAL,
 } from "./const";
 
 export const startGame = () => {
@@ -22,5 +22,11 @@ export const checkMine = (cell) => {
     return {
         type: CHECK_MINE,
         payload: cell
+    }
+};
+
+export const changeModal = () => {
+    return {
+        type: CHANGE_MODAL
     }
 };

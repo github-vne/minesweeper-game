@@ -6,6 +6,7 @@ import {HashRouter, Route, Switch} from "react-router-dom";
 /* Component */
 import Main from "./Components/Main";
 import SignIn from "./Components/SignIn";
+import Modal from "./Components/Modal";
 
 /* Redux */
 import {bindActionCreators} from "redux";
@@ -26,6 +27,7 @@ class App extends Component {
                     <Route path="/sign_in" component={SignIn}/>
                     <Route component=""/>
                 </Switch>
+                <Modal/>
             </HashRouter>
         );
 

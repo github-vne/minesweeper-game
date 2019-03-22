@@ -1,34 +1,35 @@
-.game_settings{
+.game_settings {
     margin-top: 30px;
     padding: 20px 30px;
     font-size: 16px;
 }
 
-.game_settings h4{
+.game_settings h4 {
     font-size: 20px;
     margin-bottom: 5px;
 }
 
-.settings_box{
+.settings_box {
     display: flex;
     align-items: center;
     margin-bottom: 5px;
 }
 
-.settings_box label{
+.settings_box label {
     width: 100%;
 }
 
-.settings_box input{
+.settings_box input {
     padding: 3px;
     max-width: 70px;
 }
 
-.apply_settings{
+.apply_settings {
     margin-top: 10px;
     display: flex;
     justify-content: flex-end;
 }
-.apply_settings button{
+
+.apply_settings button {
     max-width: 150px;
 }

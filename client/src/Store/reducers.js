@@ -2,6 +2,7 @@ import {
     START_GAME,
     HANDLE_CLICK,
     CHECK_MINE,
+    CHANGE_MODAL,
 } from "./const";
 
 import {
@@ -16,6 +17,7 @@ const initialState = {
     mines: 10,
     field: [],
     viewField: [],
+    modal: false,
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -52,6 +54,12 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 viewField: cellCheck,
 
+            };
+
+        case CHANGE_MODAL:
+            return {
+                ...state,
+                modal: !state.modal
             };
 
         // case PUSH_NEW_POST:
