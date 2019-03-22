@@ -1,0 +1,23 @@
+@import "reset.css";
+/* Start */
+img {
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+}
+
+.game{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    width: 100%;
+    display: flex;
+}
+
+.row button{
+    width: 30px;
+    height: 30px;
+}
