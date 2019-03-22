@@ -21,11 +21,11 @@ class App extends Component {
     render() {
         return (
             <HashRouter>
-                    <Switch>
-                        <Route exact path="/" component={Main}/>
-                        <Route path="/sign_in" component={SignIn}/>
-                        <Route component=""/>
-                    </Switch>
+                <Switch>
+                    <Route exact path="/" component={Main}/>
+                    <Route path="/sign_in" component={SignIn}/>
+                    <Route component=""/>
+                </Switch>
             </HashRouter>
         );
 
