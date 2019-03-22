@@ -6,19 +6,48 @@ import SapperImg from "../../../Static/img/sapper.png";
 import {Link} from "react-router-dom";
 
 /* Redux */
+import {bindActionCreators} from "redux";
+import {changeUserName} from "../../../Store/actions";
+import connect from "react-redux/es/connect/connect";
+
+/* Redux */
 
 class Header extends Component {
+
+    logout(){
+        localStorage.removeItem('userSapper');
+        this.props.changeUserName("");
+    }
+
     render() {
+        const {userName} = this.props;
         return (
             <header>
                 <img src={SapperImg} alt="SapperImg" className="sapper_img"/>
                 <div className="right_header">
-                    <p>Здравствуйте, Nikolay</p>
-                    <Link to="/sign_in" className="gold_btn">Выйти</Link>
+                    <p>Здравствуйте, {userName}</p>
+                    <Link
+                        to="/sign_in"
+                        className="gold_btn"
+                        onClick={() => this.logout()}
+                    >Выйти</Link>
                 </div>
             </header>
         )
     }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+    return {
+        userName: state.userName,
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        changeUserName: bindActionCreators(changeUserName, dispatch),
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+

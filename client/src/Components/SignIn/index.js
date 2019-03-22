@@ -8,7 +8,7 @@ import {Redirect} from "react-router";
 
 /* Redux */
 import {bindActionCreators} from "redux";
-import {handleClick, checkMine} from "../../Store/actions";
+import {handleClick, checkMine, changeUserName} from "../../Store/actions";
 import {connect} from "react-redux";
 
 class Main extends Component {
@@ -23,11 +23,12 @@ class Main extends Component {
     }
 
     signIn(){
-        const {login} = this.state;
-        if(login.trim() === "") {
+        const login = this.state.login.trim();
+        if(login === "") {
             this.setState({error: true});
             return false;
         }
+        this.props.changeUserName(login);
         localStorage.setItem('userSapper', login);
         this.setState({redirect: true});
     }
@@ -44,6 +45,7 @@ class Main extends Component {
                         type="text"
                         value={login}
                         onChange={(e) => this.setState({login: e.target.value})}
+                        onKeyPress={(e) => e.charCode === 13 && this.signIn()}
                     />
                     <button
                         onClick={() => this.signIn()}
@@ -66,6 +68,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleClick: bindActionCreators(handleClick, dispatch),
         checkMine: bindActionCreators(checkMine, dispatch),
+        changeUserName: bindActionCreators(changeUserName, dispatch),
     }
 };
 

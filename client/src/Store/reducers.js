@@ -3,6 +3,8 @@ import {
     HANDLE_CLICK,
     CHECK_MINE,
     CHANGE_MODAL,
+    CHANGE_USER_NAME,
+
 } from "./const";
 
 import {
@@ -18,6 +20,7 @@ const initialState = {
     field: [],
     viewField: [],
     modal: false,
+    userName: localStorage.getItem('userSapper') || "",
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -33,34 +36,54 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case HANDLE_CLICK:
-            const {i,j} = action.payload;
-            const cell = state.field[i][j];
-            let endGame = false;
-            if(cell === -1) endGame = true;
-            let changeView = [...state.viewField];
-            changeView[i][j] = 1;
-            return {
-                ...state,
-                viewField: changeView,
-                gameOver: endGame,
-            };
+            if (state.gameOver) {
+                return {...state};
+            } else {
+                let endGame = false;
+                const {i, j} = action.payload;
+                const cell = state.field[i][j];
+                let changeView = [...state.viewField];
+                if (cell === -1) {
+                    endGame = true;
+                    changeView[i][j] = -2;
+                } else {
+                    changeView[i][j] = 1;
+                }
+                return {
+                    ...state,
+                    viewField: changeView,
+                    gameOver: endGame,
+                };
+            }
+
 
         case CHECK_MINE:
-            let a = action.payload.i;
-            let b = action.payload.j;
-            const cellCheck = [...state.viewField];
-            cellCheck[a][b] === -1 ? cellCheck[a][b] = 0 : cellCheck[a][b] = -1;
-            return {
-                ...state,
-                viewField: cellCheck,
+            if (state.gameOver) {
+                return {...state};
+            } else {
+                let a = action.payload.i;
+                let b = action.payload.j;
+                const cellCheck = [...state.viewField];
+                cellCheck[a][b] === -1 ? cellCheck[a][b] = 0 : cellCheck[a][b] = -1;
+                return {
+                    ...state,
+                    viewField: cellCheck,
+                };
+            }
 
-            };
 
         case CHANGE_MODAL:
             return {
                 ...state,
                 modal: !state.modal
             };
+
+        case CHANGE_USER_NAME:
+            return {
+                ...state,
+                userName: action.payload
+            };
+
 
         // case PUSH_NEW_POST:
         //     return {

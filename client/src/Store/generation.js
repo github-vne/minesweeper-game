@@ -46,6 +46,7 @@ export const generationField = (size, quantity_mines) => {
             field[i][j] = count;
         }
     }
+    console.info("Field = ", field);
     return field;
 };
 
