@@ -6,6 +6,7 @@ import {
     CHANGE_USER_NAME,
     CHANGE_SETTINGS,
     SAVE_TIME,
+    GET_STATISTICS,
 } from "./const";
 
 export const startGame = () => {
@@ -54,3 +55,10 @@ export const saveTime = (time) => {
         payload: time,
     }
 };
+
+export const getStatistics = (data) => {
+    return {
+        type: GET_STATISTICS,
+        payload: data,
+    }
+}

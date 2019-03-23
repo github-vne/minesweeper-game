@@ -47,17 +47,11 @@ class Game extends Component {
                 return false;
             }
             if (seconds >= 60) {
-                this.setState({
-                    min: min + 1,
-                    seconds: 0
-                })
+                this.setState({min: min + 1, seconds: 0});
             } else if (milliseconds >= 9) {
-                this.setState({
-                    milliseconds: 0,
-                    seconds: seconds + 1
-                });
+                this.setState({milliseconds: 0, seconds: seconds + 1});
             } else {
-                this.setState({milliseconds: milliseconds + 1})
+                this.setState({milliseconds: milliseconds + 1});
             }
             setTimeout(() => tick(), 100);
         };
@@ -67,6 +61,7 @@ class Game extends Component {
     render() {
         const {milliseconds, seconds, min} = this.state;
         const {field, viewField, handleClick, gameOver, checkMine, statusGame, mines} = this.props;
+        console.info(field);
         return (
             <section className="game_box">
                 <div className="game_panel">
@@ -129,7 +124,6 @@ class Game extends Component {
         )
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

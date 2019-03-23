@@ -10,7 +10,6 @@ import Modal from "./Components/Modal";
 import Table from "./Components/Table";
 
 class App extends Component {
-
     render() {
         return (
             <HashRouter>

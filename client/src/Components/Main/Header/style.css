@@ -8,6 +8,11 @@ header{
 .sapper_img{
     width: 100%;
     max-width: 35px;
+    margin-right: 20px;
+}
+.left_header{
+    display: flex;
+    align-items: center;
 }
 .right_header{
     display: flex;

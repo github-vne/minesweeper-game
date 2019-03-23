@@ -1,0 +1,36 @@
+{
+  "name": "mystand",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nikolay"
+  },
+  "description": "test task",
+  "scripts": {
+    "client": "cd ../client && yarn start",
+    "server": "nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
+    "dev:server": "cd ../client && yarn build && cd ../app && yarn start",
+    "start": "node app.js",
+    "heroku-postbuild": "cd ../client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "nodemon": "^1.18.9",
+    "body-parser": "*",
+    "consolidate": "*",
+    "dust": "*",
+    "dustjs-helpers": "*",
+    "dustjs-linkedin": "*",
+    "express": "*",
+    "pg": "*"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.0"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "create-react-app"
+  ]
+}

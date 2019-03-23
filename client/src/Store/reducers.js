@@ -6,6 +6,7 @@ import {
     CHANGE_USER_NAME,
     CHANGE_SETTINGS,
     SAVE_TIME,
+    GET_STATISTICS,
 } from "./const";
 
 import {
@@ -22,7 +23,24 @@ const initialState = {
     viewField: [],
     modal: false,
     userName: localStorage.getItem('userSapper') || "",
-    time: ""
+    time: "",
+    statistics: [],
+};
+
+const addStatistic = async (size,mines,userName,time) => {
+    const data = {
+        name: userName,
+        size: `${size}x${size}`,
+        time: time,
+        mine: mines,
+    };
+
+    const requestPublish = await fetch('http://localhost:3001/statistic', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    });
+    console.info(requestPublish);
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -113,9 +131,16 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case SAVE_TIME:
+            addStatistic(state.size,state.mines,state.userName,action.payload);
             return{
                 ...state,
                 time: action.payload,
+            };
+
+        case GET_STATISTICS:
+            return {
+                ...state,
+                statistics: action.payload,
             };
 
         // case PUSH_NEW_POST:

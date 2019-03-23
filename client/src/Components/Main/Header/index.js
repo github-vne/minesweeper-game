@@ -23,7 +23,10 @@ class Header extends Component {
         const {userName} = this.props;
         return (
             <header>
-                <img src={SapperImg} alt="SapperImg" className="sapper_img"/>
+                <div className="left_header">
+                    <img src={SapperImg} alt="SapperImg" className="sapper_img"/>
+                    <Link to='/table' className="gold_btn">Таблица рекордов</Link>
+                </div>
                 <div className="right_header">
                     <p>Здравствуйте, {userName}</p>
                     <Link
