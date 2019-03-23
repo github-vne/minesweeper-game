@@ -5,6 +5,7 @@ import {
     CHANGE_MODAL,
     CHANGE_USER_NAME,
     CHANGE_SETTINGS,
+    SAVE_TIME,
 } from "./const";
 
 export const startGame = () => {
@@ -44,5 +45,12 @@ export const changeSettings = (newSettings) => {
     return {
         type: CHANGE_SETTINGS,
         payload: newSettings,
+    }
+};
+
+export const saveTime = (time) => {
+    return {
+        type: SAVE_TIME,
+        payload: time,
     }
 };

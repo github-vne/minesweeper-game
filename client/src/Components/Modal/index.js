@@ -13,14 +13,14 @@ import LostImg from '../../Static/img/modal/lost.png';
 
 class Modal extends Component {
     render() {
-        const {modal, changeModal, statusGame} = this.props;
+        const {modal, changeModal, statusGame,time} = this.props;
         return (
             <Dialog open={modal} maxWidth="xs" fullWidth={true}>
                 <div className="modal_window">
                     <img src={statusGame === "loos" ? LostImg : WinImg} alt="status_game" className="modal_img"/>
                     <div className="modal_game_status">
                         <p>Ты {statusGame === "loos" ? "проиграл" : "победил"}!</p>
-                        <p>Твоё время: 20:02</p>
+                        <p>Твоё время: {time}</p>
                     </div>
                     <aside className="modal_btn_panel">
                         <button
@@ -39,6 +39,7 @@ const mapStateToProps = (state) => {
     return {
         modal: state.modal,
         statusGame: state.statusGame,
+        time: state.time,
     }
 };
 

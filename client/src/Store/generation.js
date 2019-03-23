@@ -61,4 +61,3 @@ export const generateField = (size, mines) => {
     }
     return field;
 };
-

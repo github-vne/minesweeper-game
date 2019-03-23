@@ -5,6 +5,7 @@ import {
     CHANGE_MODAL,
     CHANGE_USER_NAME,
     CHANGE_SETTINGS,
+    SAVE_TIME,
 } from "./const";
 
 import {
@@ -21,9 +22,11 @@ const initialState = {
     viewField: [],
     modal: false,
     userName: localStorage.getItem('userSapper') || "",
+    time: ""
 };
 
 export const rootReducer = (state = initialState, action) => {
+
     switch (action.type) {
 
         case START_GAME:
@@ -36,7 +39,7 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case HANDLE_CLICK:
-            if(state.gameOver) return {...state};
+            if (state.gameOver) return {...state};
             const {i, j} = action.payload;
             const cell = state.field[i][j];
             let changeView = [...state.viewField];
@@ -55,7 +58,7 @@ export const rootReducer = (state = initialState, action) => {
                     return el === 1;
                 }).length;
                 const checkWin = checkOpenCell + state.mines;
-                if(checkWin === state.size * state.size) {
+                if (checkWin === state.size * state.size) {
                     return {
                         ...state,
                         viewField: changeView,
@@ -109,6 +112,11 @@ export const rootReducer = (state = initialState, action) => {
                 viewField: generateEmptyField(size),
             };
 
+        case SAVE_TIME:
+            return{
+                ...state,
+                time: action.payload,
+            };
 
         // case PUSH_NEW_POST:
         //     return {

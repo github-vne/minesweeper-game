@@ -3,7 +3,7 @@
 body{
     min-width: 500px;
     width: 100%;
-    background: url("../../Static/img/bacckground.jpg") no-repeat center center;
+    background: url("../../Static/img/bacckground.jpg") no-repeat fixed;
     background-size: cover;
 }
 

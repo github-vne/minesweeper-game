@@ -24,7 +24,7 @@ class Settings extends Component {
     }
 
     countSize = (act) => {
-        const {size, mines} = this.state;
+        const {size} = this.state;
         const maxSize = 15;
         const minSize = 2;
 
@@ -36,8 +36,10 @@ class Settings extends Component {
 
             case 'dec':
                 if(size - 1 < minSize) return false;
-                if(size * size - 1 > mines) this.setState({mines: size -1});
-                this.setState({size: size - 1});
+                this.setState({
+                    size: size - 1,
+                    mines: (size - 1) * 2
+                });
                 break
         }
     };
