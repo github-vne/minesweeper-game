@@ -12,6 +12,7 @@ import {
 import {
     generateField,
     generateEmptyField,
+    addStatistic,
 } from "./generation";
 
 const initialState = {
@@ -25,22 +26,6 @@ const initialState = {
     userName: localStorage.getItem('userSapper') || "",
     time: "",
     statistics: [],
-};
-
-const addStatistic = async (size,mines,userName,time) => {
-    const data = {
-        name: userName,
-        size: `${size}x${size}`,
-        time: time,
-        mine: mines,
-    };
-
-    const requestPublish = await fetch('http://localhost:3001/statistic', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
-    });
-    console.info(requestPublish);
 };
 
 export const rootReducer = (state = initialState, action) => {
@@ -103,7 +88,6 @@ export const rootReducer = (state = initialState, action) => {
                 viewField: cellCheck,
             };
 
-
         case CHANGE_MODAL:
             return {
                 ...state,
@@ -142,24 +126,6 @@ export const rootReducer = (state = initialState, action) => {
                 ...state,
                 statistics: action.payload,
             };
-
-        // case PUSH_NEW_POST:
-        //     return {
-        //         ...state,
-        //         postList: [].concat(action.payload, state.postList)
-        //     };
-        //
-        // case ADD_NEW_COMMENT:
-        //     const indexPost = state.postList.findIndex(post => {
-        //         return post._id === action.payload._id;
-        //     });
-        //     let updatePostList = [...state.postList];
-        //     updatePostList[indexPost].comments = action.payload.comments;
-        //     return{
-        //         ...state,
-        //         currentPost: action.payload,
-        //         postList: updatePostList
-        //     };
 
         default:
             return state;

@@ -12,7 +12,7 @@ import connect from "react-redux/es/connect/connect";
 
 class Table extends Component {
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('http://localhost:3001/statistic')
             .then(res => this.props.getStatistics(res.data))
             .catch(err => {
@@ -23,12 +23,9 @@ class Table extends Component {
 
     render() {
         const {statistics} = this.props;
-        console.info(statistics);
-        return(
+        return (
             <div className="table_page">
-                <Link to="/" className="gold_btn">
-                    Назад
-                </Link>
+                <Link to="/" className="gold_btn">Назад</Link>
                 <section className="table">
                     <h2>Таблица рекордов</h2>
                     <div className="table_row">
@@ -37,7 +34,7 @@ class Table extends Component {
                         <span>Мины</span>
                         <span>Время</span>
                     </div>
-                    {statistics.map((el,i) =>{
+                    {statistics.map((el, i) => {
                         return (
                             <div className="table_row" key={i}>
                                 <span>{el.name}</span>
@@ -47,7 +44,6 @@ class Table extends Component {
                             </div>
                         )
                     })}
-
                 </section>
             </div>
         )

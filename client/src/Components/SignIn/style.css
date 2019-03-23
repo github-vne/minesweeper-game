@@ -1,4 +1,4 @@
-.page_sign_in{
+.page_sign_in {
     width: 100%;
     height: 100vh;
     display: flex;
@@ -8,7 +8,7 @@
     min-height: 280px;
 }
 
-.sign_in_form{
+.sign_in_form {
     font-size: 20px;
     width: 100%;
     max-width: 350px;
@@ -20,16 +20,16 @@
     border: 5px solid #76a6c3;
 }
 
-.sign_in_form h3{
+.sign_in_form h3 {
     text-align: center;
 }
 
-.sign_in_data{
+.sign_in_data {
     margin: 15px 0;
     border: 2px solid #a4abba;
 }
 
-.sign_in_data_err{
+.sign_in_data_err {
     margin: 15px 0;
-    border: 2px solid rgba(255,21,34,0.5);
+    border: 2px solid rgba(255, 21, 34, 0.5);
 }

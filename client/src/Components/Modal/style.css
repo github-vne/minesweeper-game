@@ -1,4 +1,4 @@
-.modal_window{
+.modal_window {
     padding: 30px;
     display: flex;
     align-items: center;
@@ -6,23 +6,23 @@
     flex-direction: column;
 }
 
-.modal_img{
+.modal_img {
     width: 100%;
     max-width: 150px;
 }
 
-.modal_game_status{
+.modal_game_status {
     text-align: center;
     margin: 20px 0;
 }
 
-/* modal_btn_panel */
-.modal_btn_panel{
+/* PANEL */
+.modal_btn_panel {
     width: 100%;
     display: flex;
 }
 
-.modal_btn_panel button{
+.modal_btn_panel button {
     width: 100%;
     margin: 0 5px;
 }

@@ -10,9 +10,7 @@ import {
 } from "./const";
 
 export const startGame = () => {
-    return {
-        type: START_GAME
-    }
+    return {type: START_GAME}
 };
 
 export const handleClick = (cell) => {
@@ -30,9 +28,7 @@ export const checkMine = (cell) => {
 };
 
 export const changeModal = () => {
-    return {
-        type: CHANGE_MODAL
-    }
+    return {type: CHANGE_MODAL}
 };
 
 export const changeUserName = (name) => {
@@ -61,4 +57,4 @@ export const getStatistics = (data) => {
         type: GET_STATISTICS,
         payload: data,
     }
-}
+};

@@ -10,8 +10,6 @@ import Game from './Game';
 import Settings from './Settings';
 
 /* Redux */
-import {bindActionCreators} from "redux";
-import {changeModal} from "../../Store/actions";
 import connect from "react-redux/es/connect/connect";
 
 class Main extends Component {
@@ -24,10 +22,8 @@ class Main extends Component {
     }
 
     componentDidMount() {
-        // this.props.changeModal();
         if(this.props.userName === "") this.setState({redirect: true});
     }
-
 
     render() {
         const {redirect} = this.state;
@@ -50,11 +46,4 @@ const mapStateToProps = (state) => {
     }
 };
 
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeModal: bindActionCreators(changeModal, dispatch),
-    }
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps)(Main);

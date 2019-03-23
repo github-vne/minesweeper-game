@@ -4,11 +4,9 @@ import './style.css';
 /* Module */
 import {Redirect} from "react-router";
 
-/* Components */
-
 /* Redux */
 import {bindActionCreators} from "redux";
-import {handleClick, checkMine, changeUserName} from "../../Store/actions";
+import {changeUserName} from "../../Store/actions";
 import {connect} from "react-redux";
 
 class Main extends Component {
@@ -22,9 +20,9 @@ class Main extends Component {
         }
     }
 
-    signIn(){
+    signIn() {
         const login = this.state.login.trim();
-        if(login === "") {
+        if (login === "") {
             this.setState({error: true});
             return false;
         }
@@ -49,27 +47,18 @@ class Main extends Component {
                     />
                     <button
                         onClick={() => this.signIn()}
-                        className="gold_btn">Войти</button>
+                        className="gold_btn">Войти
+                    </button>
                 </aside>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        field: state.field,
-        viewField: state.viewField,
-        gameOver: state.gameOver,
-    }
-};
-
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleClick: bindActionCreators(handleClick, dispatch),
-        checkMine: bindActionCreators(checkMine, dispatch),
         changeUserName: bindActionCreators(changeUserName, dispatch),
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect("", mapDispatchToProps)(Main);

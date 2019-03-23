@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import './style.css';
 
+/* Module */
+import {Link} from "react-router-dom";
+
 /* IMG */
 import SapperImg from "../../../Static/img/sapper.png";
-import {Link} from "react-router-dom";
 
 /* Redux */
 import {bindActionCreators} from "redux";
 import {changeUserName} from "../../../Store/actions";
 import connect from "react-redux/es/connect/connect";
-
-/* Redux */
 
 class Header extends Component {
 

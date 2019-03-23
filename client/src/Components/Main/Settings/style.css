@@ -33,13 +33,14 @@
 .apply_settings button {
     max-width: 150px;
 }
-.count_settings{
+
+.count_settings {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.count_settings span{
+.count_settings span {
     width: 30px;
     text-align: center;
 }

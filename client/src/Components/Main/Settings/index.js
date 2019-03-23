@@ -25,20 +25,18 @@ class Settings extends Component {
 
     countSize = (act) => {
         const {size} = this.state;
-        const maxSize = 15;
-        const minSize = 2;
-
+        const maxSize = 15, minSize = 2;
         switch (act) {
             case 'inc':
-                if(size + 1 > maxSize) return false;
+                if (size + 1 > maxSize) return false;
                 this.setState({size: size + 1});
                 break;
 
             case 'dec':
-                if(size - 1 < minSize) return false;
+                if (size - 1 < minSize) return false;
                 this.setState({
                     size: size - 1,
-                    mines: (size - 1) * 2
+                    mines: size - 1
                 });
                 break
         }
@@ -48,15 +46,14 @@ class Settings extends Component {
         const {mines, size} = this.state;
         const maxMines = size * size - 1;
         const minMines = 1;
-
         switch (act) {
             case 'inc':
-                if(mines + 1 > maxMines) return false;
+                if (mines + 1 > maxMines) return false;
                 this.setState({mines: mines + 1});
                 break;
 
             case 'dec':
-                if(mines - 1 < minMines) return false;
+                if (mines - 1 < minMines) return false;
                 this.setState({mines: mines - 1});
                 break;
         }
@@ -104,7 +101,8 @@ class Settings extends Component {
                     <button
                         className="gold_btn"
                         onClick={() => changeSettings({size: size, mines: mines})}
-                    >Применить</button>
+                    >Применить
+                    </button>
                 </div>
             </section>
         )

@@ -1,25 +1,29 @@
-header{
+header {
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     margin-bottom: 30px;
 }
-.sapper_img{
+
+.sapper_img {
     width: 100%;
     max-width: 35px;
     margin-right: 20px;
 }
-.left_header{
+
+.left_header {
     display: flex;
     align-items: center;
 }
-.right_header{
+
+.right_header {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
 }
-header .gold_btn{
+
+header .gold_btn {
     padding: 3px;
     margin-top: 6px;
     font-size: 10px;

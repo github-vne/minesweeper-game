@@ -61,7 +61,6 @@ class Game extends Component {
     render() {
         const {milliseconds, seconds, min} = this.state;
         const {field, viewField, handleClick, gameOver, checkMine, statusGame, mines} = this.props;
-        console.info(field);
         return (
             <section className="game_box">
                 <div className="game_panel">
@@ -114,12 +113,11 @@ class Game extends Component {
                 </div>
                 {field.length === 0 && <img src={DeadPoolImg} alt="DeadPoolImg" className="deadpool"/>}
                 {gameOver &&
-                <div className="game_over_panel">
                     <button className="gold_btn start_game"
                             onClick={() => this.start()}>
                         Начать игру
                     </button>
-                </div>}
+                }
             </section>
         )
     }

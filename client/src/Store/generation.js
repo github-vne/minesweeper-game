@@ -61,3 +61,18 @@ export const generateField = (size, mines) => {
     }
     return field;
 };
+
+export const addStatistic = async (size,mines,userName,time) => {
+    const data = {
+        name: userName,
+        size: `${size}x${size}`,
+        time: time,
+        mine: mines,
+    };
+    const requestPublish = await fetch('http://localhost:3001/statistic', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    });
+    console.info(requestPublish);
+};
