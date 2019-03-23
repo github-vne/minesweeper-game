@@ -15,8 +15,8 @@ import {
 const initialState = {
     statusGame: "",
     gameOver: true,
-    size: 15,
-    mines: 10,
+    size: Number(localStorage.getItem('sizeSapper')) || 8,
+    mines: Number(localStorage.getItem('minesSapper')) || 10,
     field: [],
     viewField: [],
     modal: false,
@@ -96,15 +96,17 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case CHANGE_SETTINGS:
-            console.info(action.payload);
+            const {size, mines} = action.payload;
+            localStorage.setItem('sizeSapper', size);
+            localStorage.setItem('minesSapper', mines);
             return {
                 ...state,
-                size: action.payload.size,
+                size: size,
                 mines: action.payload.mines,
                 gameOver: true,
                 statusGame: "",
-                field: generateField(action.payload.size, action.payload.mines),
-                viewField: generateEmptyField(state.size),
+                field: generateField(size, mines),
+                viewField: generateEmptyField(size),
             };
 
 

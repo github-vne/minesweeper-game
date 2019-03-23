@@ -34,14 +34,14 @@ class Game extends Component {
     }
 
     render() {
-        const {field, viewField, handleClick, gameOver, checkMine, statusGame} = this.props;
+        const {field, viewField, handleClick, gameOver, checkMine, statusGame, mines} = this.props;
         return (
             <section className="game_box">
                 <div className="game_panel">
                     <img src={statusGame !== "loos" ? SmileJoyful : SmileSad} alt="Smile" className="smile"/>
                     <div>
                         <p>Таймер: 20.30</p>
-                        <p>Осталось мин: 20</p>
+                        <p>Всего мин: {mines}</p>
                     </div>
                 </div>
                 <div className="field">
@@ -105,6 +105,7 @@ const mapStateToProps = (state) => {
         viewField: state.viewField,
         gameOver: state.gameOver,
         statusGame: state.statusGame,
+        mines: state.mines,
     }
 };
 
