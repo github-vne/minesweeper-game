@@ -4,6 +4,7 @@ import {
     CHECK_MINE,
     CHANGE_MODAL,
     CHANGE_USER_NAME,
+    CHANGE_SETTINGS,
 } from "./const";
 
 export const startGame = () => {
@@ -36,5 +37,12 @@ export const changeUserName = (name) => {
     return {
         type: CHANGE_USER_NAME,
         payload: name
+    }
+};
+
+export const changeSettings = (newSettings) => {
+    return {
+        type: CHANGE_SETTINGS,
+        payload: newSettings,
     }
 };

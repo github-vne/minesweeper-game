@@ -27,12 +27,18 @@ import Btn8Img from '../../../Static/img/button/btn_8.png';
 
 
 class Game extends Component {
+
+    componentDidMount() {
+        this.props.startGame()
+
+    }
+
     render() {
-        const {field, viewField, handleClick, gameOver, checkMine} = this.props;
+        const {field, viewField, handleClick, gameOver, checkMine, statusGame} = this.props;
         return (
             <section className="game_box">
                 <div className="game_panel">
-                    <img src={!gameOver ? SmileJoyful : SmileSad} alt="Smile" className="smile"/>
+                    <img src={statusGame !== "loos" ? SmileJoyful : SmileSad} alt="Smile" className="smile"/>
                     <div>
                         <p>Таймер: 20.30</p>
                         <p>Осталось мин: 20</p>
@@ -98,6 +104,7 @@ const mapStateToProps = (state) => {
         field: state.field,
         viewField: state.viewField,
         gameOver: state.gameOver,
+        statusGame: state.statusGame,
     }
 };
 

@@ -4,17 +4,18 @@ import {
     CHECK_MINE,
     CHANGE_MODAL,
     CHANGE_USER_NAME,
-
+    CHANGE_SETTINGS,
 } from "./const";
 
 import {
-    generationField,
-    generationView,
+    generateField,
+    generateEmptyField,
 } from "./generation";
 
 const initialState = {
+    statusGame: "",
     gameOver: true,
-    size: 8,
+    size: 15,
     mines: 10,
     field: [],
     viewField: [],
@@ -29,45 +30,58 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 gameOver: false,
-                field: generationField(state.size, state.mines),
-                viewField: generationView(state.size),
+                statusGame: "",
+                field: generateField(state.size, state.mines),
+                viewField: generateEmptyField(state.size),
             };
 
         case HANDLE_CLICK:
-            if (state.gameOver) {
-                return {...state};
-            } else {
-                let endGame = false;
-                const {i, j} = action.payload;
-                const cell = state.field[i][j];
-                let changeView = [...state.viewField];
-                if (cell === -1) {
-                    endGame = true;
-                    changeView[i][j] = -2;
-                } else {
-                    changeView[i][j] = 1;
-                }
+            if(state.gameOver) return {...state};
+            const {i, j} = action.payload;
+            const cell = state.field[i][j];
+            let changeView = [...state.viewField];
+            if (cell === -1) {
+                changeView[i][j] = -2;
                 return {
                     ...state,
                     viewField: changeView,
-                    gameOver: endGame,
+                    gameOver: true,
+                    statusGame: 'loos',
+                    modal: true,
                 };
+            } else {
+                changeView[i][j] = 1;
+                const checkOpenCell = state.viewField.flat().filter(el => {
+                    return el === 1;
+                }).length;
+                const checkWin = checkOpenCell + state.mines;
+                if(checkWin === state.size * state.size) {
+                    return {
+                        ...state,
+                        viewField: changeView,
+                        gameOver: true,
+                        statusGame: 'win',
+                        modal: true,
+                    };
+                } else {
+                    return {
+                        ...state,
+                        viewField: changeView,
+                    };
+                }
             }
-
 
         case CHECK_MINE:
-            if (state.gameOver) {
-                return {...state};
-            } else {
-                let a = action.payload.i;
-                let b = action.payload.j;
-                const cellCheck = [...state.viewField];
-                cellCheck[a][b] === -1 ? cellCheck[a][b] = 0 : cellCheck[a][b] = -1;
-                return {
-                    ...state,
-                    viewField: cellCheck,
-                };
-            }
+            if (state.gameOver) return {...state};
+            let a = action.payload.i;
+            let b = action.payload.j;
+            const cellCheck = [...state.viewField];
+            cellCheck[a][b] === -1 ? cellCheck[a][b] = 0 : cellCheck[a][b] = -1;
+            return {
+                ...state,
+                viewField: cellCheck,
+            };
+
 
         case CHANGE_MODAL:
             return {
@@ -79,6 +93,18 @@ export const rootReducer = (state = initialState, action) => {
             return {
                 ...state,
                 userName: action.payload
+            };
+
+        case CHANGE_SETTINGS:
+            console.info(action.payload);
+            return {
+                ...state,
+                size: action.payload.size,
+                mines: action.payload.mines,
+                gameOver: true,
+                statusGame: "",
+                field: generateField(action.payload.size, action.payload.mines),
+                viewField: generateEmptyField(state.size),
             };
 
 

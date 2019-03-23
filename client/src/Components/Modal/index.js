@@ -12,25 +12,21 @@ import WinImg from '../../Static/img/modal/win.png';
 import LostImg from '../../Static/img/modal/lost.png';
 
 class Modal extends Component {
-
     render() {
-        const {modal, changeModal} = this.props;
+        const {modal, changeModal, statusGame} = this.props;
         return (
             <Dialog open={modal} maxWidth="xs" fullWidth={true}>
                 <div className="modal_window">
-
-                    <img src={WinImg} alt="status_game" className="modal_img"/>
+                    <img src={statusGame === "loos" ? LostImg : WinImg} alt="status_game" className="modal_img"/>
                     <div className="modal_game_status">
-                        <p>Ты победил!</p>
+                        <p>Ты {statusGame === "loos" ? "проиграл" : "победил"}!</p>
                         <p>Твоё время: 20:02</p>
                     </div>
-
                     <aside className="modal_btn_panel">
-                        <button className="gold_btn">Ещё раз</button>
                         <button
-                            className="brown_btn"
+                            className="gold_btn"
                             onClick={() => changeModal()}
-                        >Закрыть</button>
+                        >Ещё раз</button>
                     </aside>
 
                 </div>
@@ -42,6 +38,7 @@ class Modal extends Component {
 const mapStateToProps = (state) => {
     return {
         modal: state.modal,
+        statusGame: state.statusGame,
     }
 };
 
