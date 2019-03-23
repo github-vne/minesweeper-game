@@ -11,18 +11,13 @@ button{
     cursor: pointer;
 }
 
-.gold_btn, .brown_btn{
+.gold_btn{
     background: #ecae06;
     color: #7d5c04;
     border: 3px solid #f3cb5f;
     padding: 7px;
     font-weight: bold;
     font-size: 14px;
-}
-
-.brown_btn{
-    background: #d38806;
-    border: 3px solid #e3b360;
 }
 
 input{

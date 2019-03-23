@@ -18,10 +18,6 @@
     "cors": "^2.8.5",
     "nodemon": "^1.18.9",
     "body-parser": "*",
-    "consolidate": "*",
-    "dust": "*",
-    "dustjs-helpers": "*",
-    "dustjs-linkedin": "*",
     "express": "*",
     "pg": "*"
   },
