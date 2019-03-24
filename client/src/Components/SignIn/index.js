@@ -21,7 +21,7 @@ class Main extends Component {
     }
 
     signIn() {
-        const login = this.state.login.trim();
+        const login = this.state.login.trim().toLowerCase();
         if (login === "") {
             this.setState({error: true});
             return false;

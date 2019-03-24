@@ -28,3 +28,14 @@ header .gold_btn {
     margin-top: 6px;
     font-size: 10px;
 }
+
+@media screen and (max-width: 750px){
+    header{
+        flex-direction: column;
+    }
+    .right_header{
+        align-items: center;
+        margin-top: 10px;
+    }
+
+}

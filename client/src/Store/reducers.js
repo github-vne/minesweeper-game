@@ -25,6 +25,7 @@ const initialState = {
     modal: false,
     userName: localStorage.getItem('userSapper') || "",
     time: "",
+    endGame: false,
     statistics: [],
 };
 
@@ -62,6 +63,7 @@ export const rootReducer = (state = initialState, action) => {
                 }).length;
                 const checkWin = checkOpenCell + state.mines;
                 if (checkWin === state.size * state.size) {
+                    // rootReducer(state, {type: SAVE_TIME});
                     return {
                         ...state,
                         viewField: changeView,
@@ -115,7 +117,7 @@ export const rootReducer = (state = initialState, action) => {
             };
 
         case SAVE_TIME:
-            addStatistic(state.size,state.mines,state.userName,action.payload);
+            if(state.statusGame === 'win') addStatistic(state.size,state.mines,state.userName,action.payload);
             return{
                 ...state,
                 time: action.payload,

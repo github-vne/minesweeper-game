@@ -33,16 +33,16 @@ class Game extends Component {
             milliseconds: 0,
             seconds: 0,
             min: 0,
-            gameOver: true,
+            endGame: true,
         }
     }
 
     start() {
-        this.setState({min: 0, seconds: 0, milliseconds: 0});
+        this.setState({min: 0, seconds: 0, milliseconds: 0, endGame: true});
         this.props.startGame();
         const tick = () => {
-            let {milliseconds, seconds, min} = this.state;
-            if (this.props.gameOver) {
+            let {milliseconds, seconds, min, endGame} = this.state;
+            if (this.props.gameOver && !endGame) {
                 this.props.saveTime(`${min}:${seconds}:${milliseconds}`);
                 return false;
             }
@@ -53,6 +53,7 @@ class Game extends Component {
             } else {
                 this.setState({milliseconds: milliseconds + 1});
             }
+            this.setState({endGame: false});
             setTimeout(() => tick(), 100);
         };
         setTimeout(() => tick(), 100);

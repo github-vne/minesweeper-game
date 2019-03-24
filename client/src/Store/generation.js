@@ -34,28 +34,34 @@ export const generateField = (size, mines) => {
         let row = cell[0];
         let column = cell[1];
         field[row][column] = mine;
-        if (row + 1 !== size && field[row + 1][column] !== -1) {
+
+        const rowP = (row + 1 !== size);
+        const rowM = (row - 1 !== -1);
+        const collP = (column + 1 !== size);
+        const collM = (column - 1 !== -1);
+
+        if (rowP && field[row + 1][column] !== -1) {
             field[row + 1][column]++;
         }
-        if (row - 1 !== -1 && field[row - 1][column] !== -1) {
+        if (rowM && field[row - 1][column] !== -1) {
             field[row - 1][column]++;
         }
-        if (column + 1 !== size && field[row][column + 1] !== -1) {
+        if (collP && field[row][column + 1] !== -1) {
             field[row][column + 1]++;
         }
-        if (column - 1 !== -1 && field[row][column - 1] !== -1) {
+        if (collM && field[row][column - 1] !== -1) {
             field[row][column - 1]++;
         }
-        if (row + 1 !== size && column + 1 !== size && field[row + 1][column + 1] !== -1) {
+        if (rowP && collP && field[row + 1][column + 1] !== -1) {
             field[row + 1][column + 1]++
         }
-        if (row - 1 !== -1 && column + 1 !== size && field[row - 1][column + 1] !== -1) {
+        if (rowM && collP && field[row - 1][column + 1] !== -1) {
             field[row - 1][column + 1]++
         }
-        if (row + 1 !== size && column - 1 !== -1 && field[row + 1][column - 1] !== -1) {
+        if (rowP && collM && field[row + 1][column - 1] !== -1) {
             field[row + 1][column - 1]++
         }
-        if (row - 1 !== -1 && column - 1 !== -1 && field[row - 1][column - 1] !== -1) {
+        if (rowM && collM && field[row - 1][column - 1] !== -1) {
             field[row - 1][column - 1]++
         }
     }
@@ -69,10 +75,9 @@ export const addStatistic = async (size,mines,userName,time) => {
         time: time,
         mine: mines,
     };
-    const requestPublish = await fetch('http://localhost:3001/statistic', {
+    await fetch('http://localhost:3001/statistic', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
     });
-    console.info(requestPublish);
 };
